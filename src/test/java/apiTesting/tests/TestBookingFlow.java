@@ -56,7 +56,7 @@ public class TestBookingFlow {
                 then().statusCode(200).
                 assertThat().
                 body("firstname", equalTo("Josh")).
-                body("lastname", equalTo("Smith"));
+                body("lastname", equalTo("Allen"));
 
 
 
