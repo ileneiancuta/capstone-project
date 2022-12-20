@@ -46,7 +46,8 @@ public class TestGetBooking {
         // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking/:id and check that the first name and the last name are correct
         given().
                 spec(requestSpec).
-                when().get("/booking/{bookingId}").
+                pathParam("bookingid", bookingIds.stream().findFirst().get().getId()).
+                when().get("/booking/{bookingid}").
                 then().statusCode(200).
                 assertThat().
                 body("firstname", equalTo("John")).
