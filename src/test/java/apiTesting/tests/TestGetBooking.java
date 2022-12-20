@@ -31,19 +31,24 @@ public class TestGetBooking {
     @Test
     public void testGetBookingId() {
 
-        // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking and store the first booking ID
+        /*******************************************************
+        Perform an HTTP GET on https://restful-booker.herokuapp.com/booking
+        and store the first booking ID
+        *******************************************************/
         Response response = given().
                 spec(requestSpec).
                 auth().preemptive().
                 basic("admin", "password123").
                 when().get("/booking");
 
-        List<BookingID> bookingIds = response.getBody().as(new TypeRef<List<BookingID>>() {});
-        System.out.println("abccc");
-        System.out.println(bookingIds.stream().findFirst().get().getId());
-        int bookingId = bookingIds.stream().findFirst().get().getId();
+        List<BookingID> bookingIds = response.getBody().as(new TypeRef<>() {});
 
-        // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking/:id and check that the first name and the last name are correct
+
+
+        /*******************************************************
+        Perform an HTTP GET on https://restful-booker.herokuapp.com/booking/:id
+        and check that the first name and the last name are correct
+        *******************************************************/
         given().
                 spec(requestSpec).
                 pathParam("bookingid", bookingIds.stream().findFirst().get().getId()).
@@ -54,7 +59,13 @@ public class TestGetBooking {
                 body("lastname", equalTo("Smith"));
 
 
-        // Perform an HTTP POST that creates a new booking. Use POJOs and serialization. Check the response code to see if the POST was successful.
+
+        /*******************************************************
+         Perform an HTTP POST that creates a new booking.
+         Use POJOs and serialization.
+         Check the response code to see if the POST was successful.
+         *******************************************************/
+
         Booking booking1 = new Booking(1992, "Ancuta", "Stafie", 5000, true);
 
         given().
@@ -64,10 +75,6 @@ public class TestGetBooking {
                 when().
                 post("/customer").
                 then().contentType(ContentType.JSON).assertThat().statusCode(200);
-//                as(Booking.class);
 
-
-//        assertEquals("Ancuta", booking1.getFirstName());
-//        assertEquals("Stafie", booking1.getLastName());
     }
 }
