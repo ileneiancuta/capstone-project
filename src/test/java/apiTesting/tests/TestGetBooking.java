@@ -27,17 +27,11 @@ public class TestGetBooking {
     @Test
     public void testGetBookingId() {
 
-        String token = given().
+        // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking and store the first booking ID
+        String bookingId =given().
                 spec(requestSpec).
                 auth().preemptive().
                 basic("admin", "password123").
-                when().get("/token").
-                then().extract().path("token");
-
-        // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking and store the first booking ID
-        String bookingId = given().
-                spec(requestSpec).
-                auth().oauth2(token).
                 when().get("/booking").
                 then().statusCode(200).
                 extract().path("bookingid");
@@ -46,7 +40,6 @@ public class TestGetBooking {
         // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking/:id and check that the first name and the last name are correct
         given().
                 spec(requestSpec).
-                auth().oauth2(token).
                 when().get("/booking/${bookingId}").
                 then().statusCode(200).
                 assertThat().
