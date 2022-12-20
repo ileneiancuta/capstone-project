@@ -5,6 +5,7 @@ import apiTesting.entities.BookingID;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.common.mapper.TypeRef;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import java.util.List;
@@ -13,7 +14,6 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @WireMockTest
 public class TestGetBooking {
@@ -57,15 +57,17 @@ public class TestGetBooking {
         // Perform an HTTP POST that creates a new booking. Use POJOs and serialization. Check the response code to see if the POST was successful.
         Booking booking1 = new Booking(1992, "Ancuta", "Stafie", 5000, true);
 
-        Booking booking2 = given().
+        given().
                 spec(requestSpec).
                 and().
                 body(booking1).
                 when().
                 post("/customer").
-                as(Booking.class);
+                then().contentType(ContentType.JSON).assertThat().statusCode(200);
+//                as(Booking.class);
 
-        assertEquals("Ancuta", booking1.getFirstName());
-        assertEquals("Stafie", booking1.getLastName());
+
+//        assertEquals("Ancuta", booking1.getFirstName());
+//        assertEquals("Stafie", booking1.getLastName());
     }
 }
