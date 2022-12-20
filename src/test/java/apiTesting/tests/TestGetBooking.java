@@ -1,6 +1,7 @@
 package apiTesting.tests;
 
 import apiTesting.entities.Booking;
+import apiTesting.entities.BookingResponse;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
@@ -28,21 +29,21 @@ public class TestGetBooking {
     public void testGetBookingId() {
 
         // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking and store the first booking ID
-        Booking booking =given().
+        BookingResponse bookingResponse =given().
                 spec(requestSpec).
                 auth().preemptive().
                 basic("admin", "password123").
                 when().get("/booking").
-                as(Booking.class);
+                as(BookingResponse.class);
 
         System.out.println("abccc");
-        System.out.println(booking.getBookingId());
-        int bookingId = booking.getBookingId();
+        System.out.println(bookingResponse.getBookings().stream().findFirst());
+        int bookingId = bookingResponse.getBookings().stream().findFirst().get().getBookingId();
 
         // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking/:id and check that the first name and the last name are correct
         given().
                 spec(requestSpec).
-                when().get("/booking/{booking.getBookingId()}").
+                when().get("/booking/{bookingId}").
                 then().statusCode(200).
                 assertThat().
                 body("firstname", equalTo("John")).
