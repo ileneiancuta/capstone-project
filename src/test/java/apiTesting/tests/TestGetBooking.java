@@ -35,6 +35,7 @@ public class TestGetBooking {
                 basic("admin", "password123").
                 when().get("/booking");
 
+        System.out.println("abccc");
         System.out.println(response);
 
         // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking/:id and check that the first name and the last name are correct
