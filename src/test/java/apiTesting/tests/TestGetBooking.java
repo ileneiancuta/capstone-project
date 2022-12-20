@@ -3,7 +3,6 @@ package apiTesting.tests;
 import apiTesting.entities.Booking;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -51,12 +50,12 @@ public class TestGetBooking {
 
 
         // Perform an HTTP POST that creates a new booking. Use POJOs and serialization. Check the response code to see if the POST was successful.
-        Booking booking = new Booking(1992, "Ancuta", "Stafie", 5000, true);
+        Booking booking1 = new Booking(1992, "Ancuta", "Stafie", 5000, true);
 
-        Booking booking1 = given().
+        Booking booking2 = given().
                 spec(requestSpec).
                 and().
-                body(booking).
+                body(booking1).
                 when().
                 post("/customer").
                 as(Booking.class);
