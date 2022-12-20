@@ -1,8 +1,10 @@
 package apiTesting.tests;
 
+import apiTesting.entities.Booking;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
-import apiTesting.entities.*;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,14 +30,14 @@ public class TestGetBooking {
     public void testGetBookingId() {
 
         // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking and store the first booking ID
-        String bookingId =given().
+        Response response =given().
                 spec(requestSpec).
                 auth().preemptive().
                 basic("admin", "password123").
-                when().get("/booking").
-                then().statusCode(200).
-                extract().path("bookingid");
+                when().get("/booking");
 
+        System.out.println(response);
+        }
 
         // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking/:id and check that the first name and the last name are correct
         given().
