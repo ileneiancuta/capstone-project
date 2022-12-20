@@ -29,19 +29,21 @@ public class TestGetBooking {
     public void testGetBookingId() {
 
         // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking and store the first booking ID
-        Response response =given().
+        Booking booking =given().
                 spec(requestSpec).
                 auth().preemptive().
                 basic("admin", "password123").
-                when().get("/booking");
+                when().get("/booking").
+                as(Booking.class);
 
         System.out.println("abccc");
-        System.out.println(response.getBody().jsonPath().toString());
+        System.out.println(booking.getBookingId());
+        int bookingId = booking.getBookingId();
 
         // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking/:id and check that the first name and the last name are correct
         given().
                 spec(requestSpec).
-                when().get("/booking/${bookingId}").
+                when().get("/booking/{booking.getBookingId()}").
                 then().statusCode(200).
                 assertThat().
                 body("firstname", equalTo("John")).
