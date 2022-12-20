@@ -3,7 +3,6 @@ package apiTesting.tests;
 import apiTesting.entities.Booking;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,7 +36,6 @@ public class TestGetBooking {
                 when().get("/booking");
 
         System.out.println(response);
-        }
 
         // Perform an HTTP GET on https://restful-booker.herokuapp.com/booking/:id and check that the first name and the last name are correct
         given().
