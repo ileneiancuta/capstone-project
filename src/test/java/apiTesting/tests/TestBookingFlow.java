@@ -16,7 +16,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 @WireMockTest
-public class TestGetBooking {
+public class TestBookingFlow {
 
     private RequestSpecification requestSpec;
 
@@ -29,7 +29,7 @@ public class TestGetBooking {
     }
 
     @Test
-    public void testGetBookingId() {
+    public void testBookingFlow() {
 
         /*******************************************************
         Perform an HTTP GET on https://restful-booker.herokuapp.com/booking
@@ -55,7 +55,7 @@ public class TestGetBooking {
                 when().get("/booking/{bookingid}").
                 then().statusCode(200).
                 assertThat().
-                body("firstname", equalTo("John")).
+                body("firstname", equalTo("Josh")).
                 body("lastname", equalTo("Smith"));
 
 
