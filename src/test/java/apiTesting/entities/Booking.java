@@ -22,8 +22,6 @@ public class Booking {
         this.depositpaid = depositpaid;
         this.bookingdates = bookingdates;
         this.additionalneeds = additionalneeds;
-//        this.bookingdates = new BookingDates(from(Instant.now()), from(Instant.now().plus(5, ChronoUnit.DAYS)));
-//        this.additionalneeds = "Testing - additional notes";
     }
 
 
@@ -53,6 +51,20 @@ public class Booking {
     }
     public void setDepositPaid(Boolean depositPaid) {
         this.depositpaid = depositPaid;
+    }
+
+    public BookingDates getBookingDates() {
+        return bookingdates;
+    }
+    public void setAdditionalNeeds(BookingDates bookingdates) {
+        this.bookingdates = bookingdates;
+    }
+
+    public String getAdditionalNeeds() {
+        return additionalneeds;
+    }
+    public void setAdditionalNeeds(String additionalneeds) {
+        this.additionalneeds = additionalneeds;
     }
 
 }
