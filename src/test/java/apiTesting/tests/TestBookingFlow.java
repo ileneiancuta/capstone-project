@@ -3,6 +3,8 @@ package apiTesting.tests;
 import apiTesting.entities.Booking;
 import apiTesting.entities.BookingID;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.response.Response;
@@ -80,11 +82,22 @@ public class TestBookingFlow {
                 post("/booking");
 
         System.out.println("booking1");
-        System.out.println(booking1);
-        System.out.println(booking1.toString());
+        printObject(booking1);
+
+
+
+
+
         assertEquals(200, bookingResponse.getStatusCode());
         assertEquals("Ancuta", bookingResponse.as(Booking.class).getFirstName());
         assertEquals( "Stafie", bookingResponse.as(Booking.class).getLastName());
 
     }
+
+
+    public void printObject(Object object) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        System.out.println(gson.toJson(object));
+    }
+
 }
