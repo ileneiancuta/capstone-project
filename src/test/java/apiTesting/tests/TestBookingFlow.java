@@ -15,6 +15,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.hasValue;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @WireMockTest
 public class TestBookingFlow {
@@ -70,13 +71,16 @@ public class TestBookingFlow {
 
         Booking booking1 = new Booking("Ancuta", "Stafie", 5000, true);
 
-        given().
+        Booking bookingResponse = given().
                 spec(requestSpec).
                 and().
                 body(booking1).
                 when().
                 post("/booking").
-                then().assertThat().statusCode(200);
+                as(Booking.class);
+
+        assertEquals("Ancuta", bookingResponse.getFirstName());
+        assertEquals("Stafie", bookingResponse.getLastName());
 
     }
 }
