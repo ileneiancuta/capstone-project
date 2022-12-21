@@ -17,11 +17,11 @@ public class Booking {
         // It should not be called directly
     }
 
-    public Booking(String firstName, String lastName, int totalPrice, boolean depositPaid) {
-        this.firstname = firstName;
-        this.lastname = lastName;
-        this.totalprice = totalPrice;
-        this.depositpaid = depositPaid;
+    public Booking(String firstname, String lastname, int totalprice, boolean depositpaid) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.totalprice = totalprice;
+        this.depositpaid = depositpaid;
         this.bookingdates = new BookingDates(LocalDate.now().plusDays(1), LocalDate.now().plusDays(5));
         this.additionalneeds = "Testing - additional notes";
     }

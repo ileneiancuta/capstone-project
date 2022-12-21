@@ -11,8 +11,8 @@ public class BookingDates {
         // It should not be called directly
     }
 
-    public BookingDates(LocalDate checkIn, LocalDate checkout) {
-        this.checkin = checkIn;
+    public BookingDates(LocalDate checkin, LocalDate checkout) {
+        this.checkin = checkin;
         this.checkout = checkout;
     }
 
