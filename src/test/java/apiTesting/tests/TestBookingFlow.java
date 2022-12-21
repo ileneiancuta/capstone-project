@@ -81,10 +81,11 @@ public class TestBookingFlow {
 
 //                        .as(Booking.class).
 //                        then().assertThat().statusCode(200);
-
-        assertEquals(bookingResponse.getStatusCode(), 200);
-        assertEquals(bookingResponse.as(Booking.class).getFirstName(), "Ancuta");
-        assertEquals(bookingResponse.as(Booking.class).getLastName(), "Stafie");
+        System.out.println("booking1");
+        System.out.println(booking1);
+        assertEquals(200, bookingResponse.getStatusCode());
+        assertEquals("Ancuta", bookingResponse.as(Booking.class).getFirstName());
+        assertEquals( "Stafie", bookingResponse.as(Booking.class).getLastName());
 //        assertEquals("Stafie", bookingResponse.getLastName());
 
     }
