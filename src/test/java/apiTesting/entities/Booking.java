@@ -1,10 +1,5 @@
 package apiTesting.entities;
 
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-
-import static java.util.Date.from;
-
 public class Booking {
 
     private String firstname;
@@ -20,13 +15,15 @@ public class Booking {
         // It should not be called directly
     }
 
-    public Booking(String firstname, String lastname, Number totalprice, Boolean depositpaid) {
+    public Booking(String firstname, String lastname, Number totalprice, Boolean depositpaid, BookingDates bookingdates, String additionalneeds) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;
         this.depositpaid = depositpaid;
-        this.bookingdates = new BookingDates(from(Instant.now()), from(Instant.now().plus(5, ChronoUnit.DAYS)));
-        this.additionalneeds = "Testing - additional notes";
+        this.bookingdates = bookingdates;
+        this.additionalneeds = additionalneeds;
+//        this.bookingdates = new BookingDates(from(Instant.now()), from(Instant.now().plus(5, ChronoUnit.DAYS)));
+//        this.additionalneeds = "Testing - additional notes";
     }
 
 

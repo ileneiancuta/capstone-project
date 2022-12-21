@@ -1,17 +1,21 @@
 package apiTesting.tests;
 
 import apiTesting.entities.Booking;
+import apiTesting.entities.BookingDates;
 import apiTesting.entities.BookingID;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static java.util.Date.from;
 import static org.hamcrest.Matchers.hasValue;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
@@ -69,7 +73,8 @@ public class TestBookingFlow {
          Check the response code to see if the POST was successful.
          *******************************************************/
 
-        Booking booking1 = new Booking("Ancuta", "Stafie", 5000, true);
+        BookingDates bookingdates = new BookingDates(from(Instant.now()), from(Instant.now().plus(5, ChronoUnit.DAYS)));
+        Booking booking1 = new Booking("Ancuta", "Stafie", 5000, true, bookingdates, "Testing");
 
         Response bookingResponse =
                 given().
