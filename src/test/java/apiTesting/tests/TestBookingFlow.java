@@ -6,6 +6,7 @@ import apiTesting.entities.BookingID;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.common.mapper.TypeRef;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import java.time.Instant;
@@ -80,6 +81,7 @@ public class TestBookingFlow {
                 given().
                 spec(requestSpec).
                 and().
+                contentType(ContentType.JSON).
                 body(booking1).
                 when().
                 post("/booking");
