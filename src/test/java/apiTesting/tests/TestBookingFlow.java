@@ -76,7 +76,7 @@ public class TestBookingFlow {
                 and().
                 body(booking1).
                 when().
-                post("/customer").
+                post("/booking").
                 then().contentType(ContentType.JSON).assertThat().statusCode(200);
 
     }
