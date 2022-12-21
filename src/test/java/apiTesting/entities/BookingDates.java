@@ -3,8 +3,8 @@ package apiTesting.entities;
 import java.time.LocalDate;
 
 public class BookingDates {
-    private LocalDate checkin;
-    private LocalDate checkout;
+    public LocalDate checkin;
+    public LocalDate checkout;
 
     public BookingDates() {
         // This constructor is only added for deserialization purposes
