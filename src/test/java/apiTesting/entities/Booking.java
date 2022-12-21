@@ -4,12 +4,11 @@ import java.time.LocalDate;
 
 public class Booking {
 
-    private int bookingid;
     private String firstname;
     private String lastname;
     private int totalprice;
     private boolean depositpaid;
-    private BookingDates bookingDates;
+    private BookingDates bookingdates;
     private String additionalneeds;
 
 
@@ -18,22 +17,15 @@ public class Booking {
         // It should not be called directly
     }
 
-    public Booking(int bookingId, String firstName, String lastName, int totalPrice, boolean depositPaid) {
-        this.bookingid = bookingId;
+    public Booking(String firstName, String lastName, int totalPrice, boolean depositPaid) {
         this.firstname = firstName;
         this.lastname = lastName;
         this.totalprice = totalPrice;
         this.depositpaid = depositPaid;
-        this.bookingDates = new BookingDates(LocalDate.now(), LocalDate.now().plusDays(1));
+        this.bookingdates = new BookingDates(LocalDate.now().plusDays(1), LocalDate.now().plusDays(5));
         this.additionalneeds = "Testing - additional notes";
     }
 
-    public int getBookingId() {
-        return bookingid;
-    }
-    public void setBookingId(int bookingId) {
-        this.bookingid = bookingId;
-    }
 
     public String getFirstName() {
         return firstname;

@@ -68,7 +68,7 @@ public class TestBookingFlow {
          Check the response code to see if the POST was successful.
          *******************************************************/
 
-        Booking booking1 = new Booking(2023, "Ancuta", "Stafie", 5000, true);
+        Booking booking1 = new Booking("Ancuta", "Stafie", 5000, true);
 
         given().
                 spec(requestSpec).
