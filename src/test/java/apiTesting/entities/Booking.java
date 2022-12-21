@@ -9,8 +9,8 @@ public class Booking {
 
     private String firstname;
     private String lastname;
-    private int totalprice;
-    private boolean depositpaid;
+    private Number totalprice;
+    private Boolean depositpaid;
     private BookingDates bookingdates;
     private String additionalneeds;
 
@@ -20,7 +20,7 @@ public class Booking {
         // It should not be called directly
     }
 
-    public Booking(String firstname, String lastname, int totalprice, boolean depositpaid) {
+    public Booking(String firstname, String lastname, Number totalprice, Boolean depositpaid) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;
@@ -44,17 +44,17 @@ public class Booking {
         this.lastname = lastName;
     }
 
-    public int getTotalPrice() {
+    public Number getTotalPrice() {
         return totalprice;
     }
-    public void setTotalPrice(int totalprice) {
+    public void setTotalPrice(Number totalprice) {
         this.totalprice = totalprice;
     }
 
-    public boolean getDepositPaid() {
+    public Boolean getDepositPaid() {
         return depositpaid;
     }
-    public void setDepositPaid(boolean depositPaid) {
+    public void setDepositPaid(Boolean depositPaid) {
         this.depositpaid = depositPaid;
     }
 
