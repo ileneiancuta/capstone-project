@@ -1,34 +1,34 @@
 package apiTesting.entities;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class BookingDates {
-    public LocalDate checkin;
-    public LocalDate checkout;
+    private Date checkin;
+    private Date checkout;
 
     public BookingDates() {
         // This constructor is only added for deserialization purposes
         // It should not be called directly
     }
 
-    public BookingDates(LocalDate checkin, LocalDate checkout) {
+    public BookingDates(Date checkin, Date checkout) {
         this.checkin = checkin;
         this.checkout = checkout;
     }
 
-    public LocalDate getCheckIn() {
+    public Date getCheckIn() {
         return checkin;
     }
 
-    public void setCheckIn(LocalDate checkIn) {
+    public void setCheckIn(Date checkIn) {
         this.checkin = checkIn;
     }
 
-    public LocalDate getCheckOut() {
+    public Date getCheckOut() {
         return checkout;
     }
 
-    public void setCheckOut(LocalDate checkOut) {
+    public void setCheckOut(Date checkOut) {
         this.checkout = checkOut;
     }
 }

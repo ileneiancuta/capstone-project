@@ -1,6 +1,9 @@
 package apiTesting.entities;
 
-import java.time.LocalDate;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+
+import static java.util.Date.from;
 
 public class Booking {
 
@@ -22,7 +25,7 @@ public class Booking {
         this.lastname = lastname;
         this.totalprice = totalprice;
         this.depositpaid = depositpaid;
-        this.bookingdates = new BookingDates(LocalDate.now().plusDays(1), LocalDate.now().plusDays(5));
+        this.bookingdates = new BookingDates(from(Instant.now()), from(Instant.now().plus(5, ChronoUnit.DAYS)));
         this.additionalneeds = "Testing - additional notes";
     }
 
