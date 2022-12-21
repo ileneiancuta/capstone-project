@@ -5,7 +5,6 @@ import apiTesting.entities.BookingID;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.common.mapper.TypeRef;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import java.util.List;
@@ -77,7 +76,7 @@ public class TestBookingFlow {
                 body(booking1).
                 when().
                 post("/booking").
-                then().contentType(ContentType.JSON).assertThat().statusCode(200);
+                then().assertThat().statusCode(200);
 
     }
 }
