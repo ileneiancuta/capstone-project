@@ -71,16 +71,21 @@ public class TestBookingFlow {
 
         Booking booking1 = new Booking("Ancuta", "Stafie", 5000, true);
 
-        Booking bookingResponse = given().
+        Response bookingResponse =
+                given().
                 spec(requestSpec).
                 and().
                 body(booking1).
                 when().
-                post("/booking").
-                as(Booking.class);
+                post("/booking");
 
-        assertEquals("Ancuta", bookingResponse.getFirstName());
-        assertEquals("Stafie", bookingResponse.getLastName());
+//                        .as(Booking.class).
+//                        then().assertThat().statusCode(200);
+
+        assertEquals(bookingResponse.getStatusCode(), 200);
+        assertEquals(bookingResponse.as(Booking.class).getFirstName(), "Ancuta");
+        assertEquals(bookingResponse.as(Booking.class).getLastName(), "Stafie");
+//        assertEquals("Stafie", bookingResponse.getLastName());
 
     }
 }
