@@ -24,7 +24,6 @@ public class Booking {
         this.additionalneeds = additionalneeds;
     }
 
-
     public String getFirstName() {
         return firstname;
     }

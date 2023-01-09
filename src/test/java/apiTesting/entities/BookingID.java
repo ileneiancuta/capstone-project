@@ -7,20 +7,20 @@ public class BookingID {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     @JsonProperty("bookingid")
-    private int bookingid;
+    private int bookingId;
 
     public void setId(int bookingid) {
-        this.bookingid = bookingid;
+        this.bookingId = bookingid;
     }
 
     public int getId() {
-        return bookingid;
+        return bookingId;
     }
 
     @Override
     public String toString() {
         return "BookingID{" +
-                "bookingid=" + bookingid +
+                "bookingid=" + bookingId +
                 '}';
     }
 

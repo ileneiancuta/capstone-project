@@ -16,10 +16,10 @@ public class BaseTest {
         driver.manage().window().maximize();
     }
 
-//    @AfterEach
-//    public void closeBrowser() {
-//        driver.quit();
-//    }
+    @AfterEach
+    public void closeBrowser() {
+        driver.quit();
+    }
 
 
 }

@@ -31,7 +31,8 @@ public class TestBookingFlow {
     public void createRequestSpecification() {
 
         requestSpec = new RequestSpecBuilder().
-                setBaseUri("https://restful-booker.herokuapp.com").
+                setBaseUri("https://restful-booker.herokuapp.com")
+                .setRelaxedHTTPSValidation().
                 build();
     }
 
@@ -79,6 +80,7 @@ public class TestBookingFlow {
 
         Response bookingResponse =
                 given().
+                log().body().
                 spec(requestSpec).
                 and().
                 contentType(ContentType.JSON).
